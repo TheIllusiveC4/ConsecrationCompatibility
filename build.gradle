@@ -52,8 +52,15 @@ minecraft {
     }
 }
 
+repositories {
+    maven {
+        url = "https://maven.theillusivec4.top/"
+    }
+}
+
 dependencies {
     minecraft "net.minecraftforge:forge:${version_forge}"
+    compile fg.deobf("top.theillusivec4.consecration:consecration:${version_consecration}")
 }
 
 sourceSets {
