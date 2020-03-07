@@ -62,6 +62,8 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${version_forge}"
     compile fg.deobf("top.theillusivec4.consecration:consecration:${version_consecration}")
+    compile fg.deobf("curse.maven:tetra:2895098")
+    runtimeOnly fg.deobf("curse.maven:mgui:2873112")
 }
 
 sourceSets {
