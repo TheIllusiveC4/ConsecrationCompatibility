@@ -12,6 +12,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import top.theillusivec4.consecrationcompat.modules.AbstractModule;
+import top.theillusivec4.consecrationcompat.modules.SpartanWeaponryModule;
 import top.theillusivec4.consecrationcompat.modules.TetraModule;
 
 @Mod(ConsecrationCompat.MODID)
@@ -25,6 +26,7 @@ public class ConsecrationCompat {
 
   static {
     MODULES.put("tetra", TetraModule.class);
+    MODULES.put("spartanweaponry", SpartanWeaponryModule.class);
   }
 
   public ConsecrationCompat() {
