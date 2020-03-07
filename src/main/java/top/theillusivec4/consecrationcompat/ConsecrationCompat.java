@@ -11,7 +11,8 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import top.theillusivec4.consecrationcompat.modules.AbstractModule;
+import top.theillusivec4.consecrationcompat.modules.Module;
+import top.theillusivec4.consecrationcompat.modules.SilentGearModule;
 import top.theillusivec4.consecrationcompat.modules.SpartanWeaponryModule;
 import top.theillusivec4.consecrationcompat.modules.TetraModule;
 
@@ -21,12 +22,13 @@ public class ConsecrationCompat {
   public static final String MODID = "consecrationcompat";
   public static final Logger LOGGER = LogManager.getLogger();
 
-  public static final Map<String, Class<? extends AbstractModule>> MODULES = new HashMap<>();
-  public static final List<AbstractModule> ACTIVE_MODULES = new ArrayList<>();
+  public static final Map<String, Class<? extends Module>> MODULES = new HashMap<>();
+  public static final List<Module> ACTIVE_MODULES = new ArrayList<>();
 
   static {
     MODULES.put("tetra", TetraModule.class);
     MODULES.put("spartanweaponry", SpartanWeaponryModule.class);
+    MODULES.put("silentgear", SilentGearModule.class);
   }
 
   public ConsecrationCompat() {
@@ -44,6 +46,6 @@ public class ConsecrationCompat {
   }
 
   private void imcEnqueue(final InterModEnqueueEvent evt) {
-    ACTIVE_MODULES.forEach(AbstractModule::enqueueImc);
+    ACTIVE_MODULES.forEach(Module::enqueueImc);
   }
 }

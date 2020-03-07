@@ -61,10 +61,13 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${version_forge}"
-    compile fg.deobf("top.theillusivec4.consecration:consecration:${version_consecration}")
+    compileOnly fg.deobf("top.theillusivec4.consecration:consecration:${version_consecration}:api")
     compile fg.deobf("curse.maven:tetra:2895098")
     compile fg.deobf("curse.maven:spartan-weaponry:2894754")
+    compile fg.deobf("curse.maven:silent-gear:2849573")
     runtimeOnly fg.deobf("curse.maven:mgui:2873112")
+    runtimeOnly fg.deobf("curse.maven:silent-lib:2783899")
+    runtimeOnly fg.deobf("top.theillusivec4.consecration:consecration:${version_consecration}")
 }
 
 sourceSets {

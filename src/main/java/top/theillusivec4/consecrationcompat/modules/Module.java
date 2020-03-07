@@ -1,6 +1,6 @@
 package top.theillusivec4.consecrationcompat.modules;
 
-public abstract class AbstractModule {
+public abstract class Module {
 
   public abstract void enqueueImc();
 }

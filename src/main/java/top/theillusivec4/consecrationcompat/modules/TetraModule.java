@@ -9,7 +9,7 @@ import net.minecraftforge.fml.InterModComms;
 import se.mickelus.tetra.items.modular.IItemModular;
 import top.theillusivec4.consecration.api.ConsecrationAPI;
 
-public class TetraModule extends AbstractModule {
+public class TetraModule extends Module {
 
   @Override
   public void enqueueImc() {
@@ -39,7 +39,7 @@ public class TetraModule extends AbstractModule {
         });
   }
 
-  public static boolean containsHolyMaterial(String value) {
+  private static boolean containsHolyMaterial(String value) {
 
     for (String mat : ConsecrationAPI.getHolyMaterials()) {
       String pattern = "\\w*/" + mat + "(\\b|[_-]\\w*)";

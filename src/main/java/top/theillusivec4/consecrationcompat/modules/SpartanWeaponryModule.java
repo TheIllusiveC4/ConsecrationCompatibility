@@ -1,7 +1,6 @@
 package top.theillusivec4.consecrationcompat.modules;
 
 import com.oblivioussp.spartanweaponry.api.IWeaponTraitContainer;
-import com.oblivioussp.spartanweaponry.entity.projectile.ArrowBaseEntity;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.function.BiFunction;
@@ -16,7 +15,7 @@ import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import top.theillusivec4.consecration.api.ConsecrationAPI;
 import top.theillusivec4.consecrationcompat.ConsecrationCompat;
 
-public class SpartanWeaponryModule extends AbstractModule {
+public class SpartanWeaponryModule extends Module {
 
   private final static Method GET_ARROW_STACK = ObfuscationReflectionHelper
       .findMethod(AbstractArrowEntity.class, "func_184550_j");
@@ -54,7 +53,7 @@ public class SpartanWeaponryModule extends AbstractModule {
         });
   }
 
-  public static boolean containsHolyMaterial(String value) {
+  private static boolean containsHolyMaterial(String value) {
 
     for (String mat : ConsecrationAPI.getHolyMaterials()) {
       String pattern = "arrow_" + mat + "(\\b|[_-]\\w*)";
