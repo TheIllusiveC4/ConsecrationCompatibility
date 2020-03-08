@@ -121,6 +121,9 @@ curseforge {
         addArtifact(sourcesJar)
         relations {
             requiredDependency 'consecration'
+            optionalDependency 'tetra'
+            optionalDependency 'spartan-weaponry'
+            optionalDependency 'silent-gear'
         }
     }
 }
