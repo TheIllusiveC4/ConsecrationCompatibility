@@ -29,3 +29,9 @@ ${mod_description}
     versionRange="[FORGE-1.14.4-2.0-beta2,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.consecrationcompat]]
+    modId="spartanweaponry"
+    mandatory=false
+    versionRange="[2.0.0 alpha 3,)"
+    ordering="NONE"
+    side="BOTH"

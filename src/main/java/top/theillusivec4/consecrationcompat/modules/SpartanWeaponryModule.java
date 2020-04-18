@@ -54,8 +54,7 @@ public class SpartanWeaponryModule extends Module {
             ItemStack stack = ((LivingEntity) source).getHeldItemMainhand();
 
             if (stack.getItem() instanceof IWeaponTraitContainer) {
-              String name = ((IWeaponTraitContainer<?>) stack.getItem()).getMaterial()
-                  .getUnlocName();
+              String name = ((IWeaponTraitContainer<?>) stack.getItem()).getMaterial().getMaterialName();
               return ConsecrationAPI.getHolyMaterials().contains(name);
             }
           } else if (source instanceof AbstractArrowEntity) {
