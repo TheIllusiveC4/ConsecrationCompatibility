@@ -29,10 +29,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.InterModComms;
-import net.silentchaos512.gear.api.parts.PartDataList;
-import net.silentchaos512.gear.parts.PartData;
-import net.silentchaos512.gear.util.GearData;
-import net.silentchaos512.gear.util.GearHelper;
+import net.silentchaos512.gear.api.item.ICoreItem;
+import net.silentchaos512.gear.util.Const;
+import net.silentchaos512.gear.util.TraitHelper;
 import top.theillusivec4.consecration.api.ConsecrationAPI;
 import top.theillusivec4.consecration.api.ConsecrationAPI.IMC;
 import top.theillusivec4.consecrationcompat.modules.base.Module;
@@ -66,31 +65,8 @@ public class SilentGearModule extends Module {
   }
 
   private static boolean containsHolyMaterial(ItemStack stack) {
-    if (GearHelper.isGear(stack)) {
-      PartDataList data = GearData.getConstructionParts(stack);
-
-      for (PartData partData : data) {
-        ItemStack[] stacks = partData.getPart().getMaterials().getNormal().getMatchingStacks();
-
-        for (ItemStack mat : stacks) {
-          ResourceLocation resourceLocation = mat.getItem().getRegistryName();
-
-          if (resourceLocation != null && containsHolyMaterial(resourceLocation)) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-
-  private static boolean containsHolyMaterial(ResourceLocation resourceLocation) {
-
-    for (String mat : ConsecrationAPI.getHolyMaterials()) {
-      String pattern = "^" + mat + "(\\b|[_-]\\w*)";
-      if (resourceLocation.getPath().matches(pattern)) {
-        return true;
-      }
+    if (stack.getItem() instanceof ICoreItem) {
+      return TraitHelper.getTraitLevel(stack, Const.Traits.HOLY) > 0;
     }
     return false;
   }
