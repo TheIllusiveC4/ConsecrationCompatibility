@@ -26,8 +26,12 @@ package top.theillusivec4.consecrationcompat.modules;
 import java.util.function.BiFunction;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.INBT;
+import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.InterModComms;
 import net.silentchaos512.gear.api.parts.PartDataList;
 import net.silentchaos512.gear.parts.PartData;
@@ -66,17 +70,23 @@ public class SilentGearModule extends Module {
   }
 
   private static boolean containsHolyMaterial(ItemStack stack) {
+
     if (GearHelper.isGear(stack)) {
       PartDataList data = GearData.getConstructionParts(stack);
 
       for (PartData partData : data) {
-        ItemStack[] stacks = partData.getPart().getMaterials().getNormal().getMatchingStacks();
+        ItemStack crafting = partData.getCraftingItem();
+        CompoundNBT tag = crafting.getTag();
 
-        for (ItemStack mat : stacks) {
-          ResourceLocation resourceLocation = mat.getItem().getRegistryName();
+        if (tag != null) {
+          ListNBT list = tag.getList("Materials", Constants.NBT.TAG_COMPOUND);
 
-          if (resourceLocation != null && containsHolyMaterial(resourceLocation)) {
-            return true;
+          for (INBT inbt : list) {
+            CompoundNBT entry = (CompoundNBT) inbt;
+
+            if (containsHolyMaterial(new ResourceLocation(entry.getString("ID")))) {
+              return true;
+            }
           }
         }
       }

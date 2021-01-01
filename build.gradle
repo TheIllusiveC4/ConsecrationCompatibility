@@ -8,12 +8,10 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
         classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.4.0'
-        classpath "com.wynprice.cursemaven:CurseMaven:2.1.1"
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'com.matthewprenger.cursegradle'
-apply plugin: "com.wynprice.cursemaven"
 
 version = "${version_minecraft}-${mod_version}"
 group = "${mod_group}"
@@ -22,7 +20,7 @@ archivesBaseName = "${mod_id}"
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'stable', version: "${version_mcp}".toString()
+    mappings channel: 'snapshot', version: "${version_mcp}".toString()
 
     runs {
         client {
@@ -57,16 +55,19 @@ repositories {
     maven {
         url = "https://maven.theillusivec4.top/"
     }
+    maven {
+        url = "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${version_forge}"
     compileOnly fg.deobf("top.theillusivec4.consecration:consecration:${version_consecration}:api")
-    compile fg.deobf("curse.maven:tetra:2895098")
-    compile fg.deobf("curse.maven:spartan-weaponry:2903808")
-    compile fg.deobf("curse.maven:silent-gear:2849573")
-    runtimeOnly fg.deobf("curse.maven:mgui:2873112")
-    runtimeOnly fg.deobf("curse.maven:silent-lib:2783899")
+    compile fg.deobf("curse.maven:tetra-289712:3023406")
+    compile fg.deobf("curse.maven:spartanweaponry-278141:3083985")
+    compile fg.deobf("curse.maven:silentgear-297039:3138530")
+    runtimeOnly fg.deobf("curse.maven:mgui-351914:2928277")
+    runtimeOnly fg.deobf("curse.maven:silentlib-242998:3003984")
     runtimeOnly fg.deobf("top.theillusivec4.consecration:consecration:${version_consecration}")
 }
 
